@@ -4,19 +4,19 @@ import React from "react";
 import RenderTag from "./RenderTag";
 
 const hotQuestions = [
-  { _id: 1, title: "Ask any question related to Code, Dev or DSA" },
-  { _id: 2, title: "Ask any question related to Code, Dev or DSA" },
-  { _id: 3, title: "Ask any question related to Code, Dev or DSA" },
-  { _id: 4, title: "Ask any question related to Code, Dev or DSA" },
-  { _id: 5, title: "Ask any question related to Code, Dev or DSA" },
+  { _id: "1", title: "Ask any question related to Code, Dev or DSA" },
+  { _id: "2", title: "Ask any question related to Code, Dev or DSA" },
+  { _id: "3", title: "Ask any question related to Code, Dev or DSA" },
+  { _id: "4", title: "Ask any question related to Code, Dev or DSA" },
+  { _id: "5", title: "Ask any question related to Code, Dev or DSA" },
 ];
 
 const popularTags = [
-  { _id: 1, name: "Javascript", totalQuestions: 5 },
-  { _id: 1, name: "react", totalQuestions: 5 },
-  { _id: 1, name: "nextjs", totalQuestions: 5 },
-  { _id: 1, name: "mongodb", totalQuestions: 5 },
-  { _id: 1, name: "redux", totalQuestions: 5 },
+  { _id: "1", name: "Javascript", totalQuestions: 5 },
+  { _id: "2", name: "react", totalQuestions: 5 },
+  { _id: "3", name: "nextjs", totalQuestions: 5 },
+  { _id: "4", name: "mongodb", totalQuestions: 5 },
+  { _id: "5", name: "redux", totalQuestions: 5 },
 ];
 
 const RightSidebar = () => {
