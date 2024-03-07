@@ -5,39 +5,14 @@ import NoResult from "@/components/shared/NoResult";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
+import { getQuestions } from "@/lib/actions/question.action";
 import Link from "next/link";
 import React from "react";
 
-const questions = [
-  {
-    _id: "1",
-    title: "What is the question?",
-    tags: [
-      { _id: "1", name: "python" },
-      { _id: "2", name: "c++" },
-    ],
-    author: { _id: "1", name: "Ujjwal", picture: "url_to_picture" },
-    upvotes: 1200,
-    views: 12300,
-    answers: [{}, {}],
-    createdAt: new Date("2024-03-01"),
-  },
-  {
-    _id: "2",
-    title: "What is second question?",
-    tags: [
-      { _id: "1", name: "python" },
-      { _id: "2", name: "c++" },
-    ],
-    author: { _id: "1", name: "Ujjwal", picture: "url_to_picture" },
-    upvotes: 12340,
-    views: 1234500,
-    answers: [{}, {}],
-    createdAt: new Date("2024-03-01"),
-  },
-];
+const Home = async () => {
+  const result = await getQuestions({});
+  const { questions } = result;
 
-const Home = () => {
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -70,7 +45,17 @@ const Home = () => {
       <div className="mt-10 flex w-full flex-col gap-6">
         {questions.length > 0 ? (
           questions.map((question) => (
-            <QuestionCard key={question._id} {...question} />
+            <QuestionCard
+              key={question._id}
+              _id={question._id}
+              title={question.title}
+              tags={question.tags}
+              author={question.author}
+              upvotes={question.upvotes}
+              views={question.views}
+              answers={question.answers}
+              createdAt={question.createdAt}
+            />
           ))
         ) : (
           <NoResult
