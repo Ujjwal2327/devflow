@@ -25,6 +25,7 @@ const QuestionCard = ({
   answers,
   createdAt,
 }: Props) => {
+
   return (
     <div className=" card-wrapper rounded-[10px] p-9 sm:px-11">
       {/* title */}
@@ -44,7 +45,7 @@ const QuestionCard = ({
       {/* tags */}
       <div className="mt-3.5 flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <RenderTag key={tag._id} {...tag} />
+          <RenderTag key={tag._id} _id={tag._id} name={tag.name} />
         ))}
       </div>
 
