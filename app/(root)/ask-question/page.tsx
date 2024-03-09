@@ -7,8 +7,12 @@ import React from "react";
 const Page = async () => {
   const { userId: clerkId } = auth();
   if (!clerkId) redirect("/sign-in");
-
+  
   const mongoUser = await getUserByClerkId({ clerkId });
+  if (!mongoUser) {
+    alert("error in syncing clerk and mongodb")
+    redirect("/sign-in");
+  }
 
   return (
     <div>

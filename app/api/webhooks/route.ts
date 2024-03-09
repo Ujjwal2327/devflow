@@ -50,10 +50,10 @@ export async function POST(req: Request) {
     })
   }
 
-  // Get the ID and type
+  // Get the type
   const eventType = evt.type;
   console.log('Webhook body:', body)
-  console.log('Webhook event:', evt)
+  // console.log('Webhook event:', evt)
 
   if (eventType === 'user.created') {
     const { id, email_addresses, image_url, username, first_name, last_name } = evt.data;
@@ -90,6 +90,7 @@ export async function POST(req: Request) {
     const { id } = evt.data;
 
     const deletedUser = await deleteUser({ clerkId: id! });
+    
     return NextResponse.json({ message: 'OK', user: deletedUser })
   }
 
