@@ -10,8 +10,8 @@ const Page = async () => {
   
   const mongoUser = await getUserByClerkId({ clerkId });
   if (!mongoUser) {
-    alert("error in syncing clerk and mongodb")
-    redirect("/sign-in");
+    console.log("error in syncing clerk and mongodb, so redirect to home page");
+    redirect("/");
   }
 
   return (
