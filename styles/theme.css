@@ -183,12 +183,12 @@
     @apply invert dark:invert-0;
   }
 
-  .shadow-light100_dark100 {
-    @apply shadow-light-100 dark:shadow-dark-100;
+  .shadow-lightsm_dark100 {
+    @apply shadow-sm dark:shadow-dark-100;
   }
 
-  .shadow-light100_darknone {
-    @apply shadow-light-100 dark:shadow-none;
+  .shadow-lightsm_darknone {
+    @apply shadow-sm dark:shadow-none;
   }
 
   .primary-gradient {
