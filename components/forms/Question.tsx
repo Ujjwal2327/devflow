@@ -15,12 +15,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { QuestionSchema } from "@/lib/validations";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/actions/question.action";
 import { usePathname, useRouter } from "next/navigation";
+import { useTheme } from "@/context/ThemeProvider";
 
 const type: string = "create";
 
@@ -29,6 +30,8 @@ interface Props {
 }
 
 const Question = ({ mongoUserId }: Props) => {
+  const editorRef = useRef(null);
+  const { mode } = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -139,14 +142,20 @@ const Question = ({ mongoUserId }: Props) => {
                   apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                   onBlur={field.onBlur}
                   onEditorChange={(content) => field.onChange(content)}
+                  onInit={(evt, editor) => {
+                    // @ts-ignore
+                    editorRef.current = editor;
+                  }}
                   init={{
                     height: 350,
                     menubar: false,
                     plugins:
-                      "advlist autolink lists link image charmap preview anchor searchreplace visualblocks codesample fullscreen insertdatetime media table checklist",
+                      "advlist autolink lists link image charmap preview anchor searchreplace visualblocks codesample fullscreen insertdatetime media table underline",
                     toolbar:
-                      "undo redo | blocks codesample | bold italic forecolor | alignleft aligncenter alignright alignjustify | checklist numlist bullist",
+                      "undo redo | blocks codesample | bold italic underline | alignleft aligncenter alignright alignjustify | numlist bullist",
                     content_style: "body{font-family:Inter; font-size:16px;}",
+                    skin: mode === "dark" ? "oxide-dark" : "oxide",
+                    content_css: mode === "dark" ? "dark" : "light",
                   }}
                   initialValue=""
                 />
